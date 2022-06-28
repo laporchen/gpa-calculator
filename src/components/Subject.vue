@@ -33,12 +33,12 @@
                   <option >C+</option>
                   <option >C</option>
                   <option >C-</option>
-                  <option >F</option>
+                  <option >E</option>
                   <option >X</option>
                 </select>
               </div>
               <div class="col-lg-1 col-2 col-sm-2 ">
-                <input type="number" v-model="inputCred" min=1 placeholder="">
+                <input type="number" @keypress="isNumber($event)" v-model="inputCred" min=1 placeholder="">
               </div>
         </template>
         <div class="col-lg-1 col-2 col-sm-3">
@@ -69,11 +69,28 @@ export default {
     }
   },
   methods : {
+    isNumber(evt) {
+      evt = (evt) ? evt : window.event;
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        evt.preventDefault();
+      } else {
+        return true;
+      }
+    },
     remove () {
       this.$emit('update',this.index);
     },
     add () {
-      this.$emit('update',this.inputName,this.inputCred,this.inputGrade);
+      if(isNaN(this.inputCred) || this.inputGrade == "") {
+        alert("Please fill all the fields");
+        return;
+      }
+      else if(this.inputCred <= 0) {
+        alert("Credit invalid.");
+        return;
+      }
+      this.$emit('update',this.inputName,parseInt(this.inputCred),this.inputGrade)
       this.inputName = "";
     }
   }

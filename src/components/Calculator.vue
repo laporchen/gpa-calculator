@@ -49,24 +49,17 @@ export default {
       if(grade == "C+") return 2.3;
       if(grade == "C") return 2.0;
       if(grade == "C-") return 1.7;
-      if(grade == "F") return 0;
+      if(grade == "E") return 0;
       if(grade == "X") return 0;
+      return 0;
     },
     addSubject(name,cred,grade) {
-      if(cred == "" || grade == "") {
-        alert("Please fill all the fields");
-        return;
-      }
-      else if(cred <= 0) {
-        alert("Credit invalid.");
-        return;
-      }
       this.subjects.push({
         name : name == "" ? "未命名" : name,
         cred : cred,
         grade : grade,
       });
-      return;
+      return true;
     },
     removeSubject(index) {
       this.subjects.splice(index,1);
@@ -80,7 +73,7 @@ export default {
       let result = this.subjects.reduce((acc, cur) => {
         return acc + cur.cred * this.gradeVal(cur.grade);
       }, 0) / this.subjects.reduce((acc, cur) => { return acc + cur.cred; }, 0);
-      return result.toFixed(2);
+      return result.toFixed(3);
     },
     sumCred : function() {
       return this.subjects.reduce((acc, cur) => {
