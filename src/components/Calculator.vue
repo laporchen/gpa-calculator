@@ -73,13 +73,6 @@ export default {
     }
   },
   mounted () {
-    this.subjects = new Array(1).fill(0).map(() => {
-      return {
-        name : "程式設計",
-        grade : "B",
-        cred : 3,
-      }
-    })
   },
   computed : {
     sumGpa : function() {
