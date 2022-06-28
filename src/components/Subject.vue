@@ -8,38 +8,36 @@
           <div class="col-lg-1 col-2 col-sm-2"><strong>學分</strong></div>
         </template>
         <template v-else-if="isInput === false">
-            <div class="col-lg-3 col-6 col-sm-4">
-              {{name}}
-            </div>
-            <div class="col-lg-1 col-2 col-sm-2">
-              {{grade}}
-            </div>
-            <div class="col-lg-1 col-2 col-sm-2 ">
-              {{cred}}
-            </div>
+          <div class="col-lg-3 col-6 col-sm-4"> {{name}} </div>
+          <div class="col-lg-1 col-2 col-sm-2"> {{grade}} </div>
+          <div class="col-lg-1 col-2 col-sm-2 "> {{cred}} </div>
         </template>
         <template v-else>
-              <div class="col-lg-3 col-6 col-sm-4 ">
-                <input type="text" v-model="inputName" placeholder="名稱">
-              </div>
-              <div class="col-lg-1 col-2 col-sm-2 ">
-                <select v-model="inputGrade">
-                  <option >A+</option>
-                  <option >A</option>
-                  <option >A-</option>
-                  <option >B+</option>
-                  <option >B</option>
-                  <option >B-</option>
-                  <option >C+</option>
-                  <option >C</option>
-                  <option >C-</option>
-                  <option >E</option>
-                  <option >X</option>
-                </select>
-              </div>
-              <div class="col-lg-1 col-2 col-sm-2 ">
-                <input type="number" @keypress="isNumber($event)" v-model="inputCred" min=1 placeholder="">
-              </div>
+          <div class="col-lg-3 col-6 col-sm-4 ">
+            <input type="text" v-model="inputName" placeholder="名稱">
+          </div>
+          <div class="col-lg-1 col-2 col-sm-2 ">
+            <select v-model="inputGrade">
+              <option >A+</option>
+              <option >A</option>
+              <option >A-</option>
+              <option >B+</option>
+              <option >B</option>
+              <option >B-</option>
+              <option >C+</option>
+              <option >C</option>
+              <option >C-</option>
+              <option >E</option>
+              <option >X</option>
+            </select>
+          </div>
+          <div class="col-lg-1 col-2 col-sm-2 ">
+            <select v-model="inputCred">
+              <template v-for="i in 4" :key="i">
+              <option :value="i">{{i}}</option>
+              </template>
+            </select>
+          </div>
         </template>
         <div class="col-lg-1 col-2 col-sm-3">
           <button class="btn btn-danger btn-sm" @click="remove" v-if="isInput !== true && isHeader == false" >刪除</button>
@@ -114,23 +112,23 @@ div {
   height: auto;
 }
 .bg {
-  border-right: 1px dotted #fff;
+  border: solid 2px #000;
   background:#f0f0f0;
 }
 .col-6 input {
-  width: 90%;
-  max-width: 100%;
+  max-width: 90%;
 }
 .col-2 input {
-  width: 100%;
-  
+  max-width: 90%;
 }
 .col-lg-4 input {
-  width: 80%;
+  max-width: 100%;
 }
 div { 
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding: 2px;
   vertical-align: middle;
+}
+.subject {
+  width: 100%;
 }
 </style>

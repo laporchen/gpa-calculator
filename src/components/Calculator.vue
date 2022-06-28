@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row justify-content-center align-items-center">
         <subject v-bind:isHeader=true ></subject>
-        <div v-for="(item,index) in subjects" :key="index">
+        <div v-for="(item,index) in subjects" style="padding:0;" :key="index">
           <subject :index="index" :name="item.name" :cred="item.cred" :grade="item.grade" v-bind:isInput="false" @update="removeSubject"></subject>
         </div>
         <subject v-bind:isInput="true" @update="addSubject"></subject>
