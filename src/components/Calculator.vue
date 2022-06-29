@@ -49,6 +49,7 @@ export default {
       if(grade == "C+") return 2.3;
       if(grade == "C") return 2.0;
       if(grade == "C-") return 1.7;
+      if(grade == "D") return 1.0;
       if(grade == "E") return 0;
       if(grade == "X") return 0;
       return 0;

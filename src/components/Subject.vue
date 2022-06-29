@@ -27,6 +27,7 @@
               <option >C+</option>
               <option >C</option>
               <option >C-</option>
+              <option >D</option>
               <option >E</option>
               <option >X</option>
             </select>
